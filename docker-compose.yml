@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+    db:
+        image: postgres:15
+        container_name: laravel_db_api
+        environment:
+            POSTGRES_DB: laravel_api
+            POSTGRES_USER: laravel_user
+            POSTGRES_PASSWORD: secret
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+        networks:
+            - laravel
+
+networks:
+    laravel:
+
+volumes:
+    pgdata:
